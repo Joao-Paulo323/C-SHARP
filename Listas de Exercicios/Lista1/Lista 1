@@ -1,0 +1,113 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // a) Número inteiro
+        Console.WriteLine("A) Digite um número inteiro:");
+        int numeroInteiro = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Valor digitado: " + numeroInteiro);
+        Console.WriteLine();
+
+
+        // b) Número real (double)
+        Console.WriteLine("B) Digite um número real:");
+        double numeroDouble = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Valor digitado: " + numeroDouble);
+        Console.WriteLine();
+
+
+        // c) Número de ponto flutuante (float)
+        Console.WriteLine("C) Digite um número de ponto flutuante:");
+        float numeroFloat = float.Parse(Console.ReadLine());
+
+        Console.WriteLine("Valor digitado: " + numeroFloat);
+        Console.WriteLine();
+
+
+        // d) Sim ou não (bool)
+        Console.WriteLine("D) Digite sim ou não:");
+        string resposta = Console.ReadLine();
+
+        bool respostaBool = resposta.ToLower() == "sim";
+
+        Console.WriteLine("Valor booleano: " + respostaBool);
+        Console.WriteLine();
+
+
+        // e) Caractere
+        Console.WriteLine("E) Digite um caractere:");
+        char caractere = char.Parse(Console.ReadLine());
+
+        Console.WriteLine("Caractere digitado: " + caractere);
+        Console.WriteLine();
+
+
+        // f) Número decimal
+        Console.WriteLine("F) Digite um número decimal:");
+        decimal numeroDecimal = decimal.Parse(Console.ReadLine());
+
+        Console.WriteLine("Valor digitado: " + numeroDecimal);
+        Console.WriteLine();
+
+
+        // g) Nome e idade
+        Console.WriteLine("G) Digite seu nome:");
+        string nome = Console.ReadLine();
+
+        Console.WriteLine("Digite sua idade:");
+        int idade = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Nome: " + nome);
+        Console.WriteLine("Idade: " + idade);
+        Console.WriteLine();
+
+
+        // h) Preço e desconto
+        Console.WriteLine("H) Digite o preço do produto:");
+        double preco = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Digite o desconto em porcentagem:");
+        double desconto = double.Parse(Console.ReadLine());
+
+        double valorDesconto = preco * desconto / 100;
+        double precoFinal = preco - valorDesconto;
+
+        Console.WriteLine("Preço final: " + precoFinal);
+        Console.WriteLine();
+
+
+        // i) Palavra e comprimento
+        Console.WriteLine("I) Digite uma palavra:");
+        string palavra = Console.ReadLine();
+
+        Console.WriteLine("O comprimento da palavra é: " + palavra.Length);
+        Console.WriteLine();
+
+
+        // j) Endereço completo
+        Console.WriteLine("J) Digite seu endereço:");
+
+        Console.WriteLine("Número da casa:");
+        string numeroCasa = Console.ReadLine();
+
+        Console.WriteLine("Rua:");
+        string rua = Console.ReadLine();
+
+        Console.WriteLine("Bairro:");
+        string bairro = Console.ReadLine();
+
+        Console.WriteLine("Cidade:");
+        string cidade = Console.ReadLine();
+
+        Console.WriteLine("Estado:");
+        string estado = Console.ReadLine();
+
+        Console.WriteLine();
+        Console.WriteLine("ENDEREÇO COMPLETO:");
+        Console.WriteLine(numeroCasa + ", " + rua + ", " + bairro + ", " + cidade + " - " + estado);
+    }
+}
