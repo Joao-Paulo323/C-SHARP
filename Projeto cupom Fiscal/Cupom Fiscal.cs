@@ -1,4 +1,4 @@
-﻿namespace Cupom_Fiscal
+namespace Cupom_Fiscal
 {
     class Menu
     {
@@ -122,7 +122,7 @@
 
                 if (string.Equals(resp, "PROMO5", StringComparison.OrdinalIgnoreCase))
                 {
-                    cupom = taxa - (total * 0.05);
+                    cupom = taxa - (taxa * 0.05);
                 }
                 else
                 {
@@ -133,13 +133,14 @@
             {
                 cupom = taxa;
             }
- 
+
             //Desconto VIP
             if (Vip[0] > 0)
             {
                 Vip[1] = cupom - (cupom * Vip[0]);
             }
-            else if ( Vip[0] ==0) {
+            else if (Vip[0] == 0)
+            {
                 Vip[1] = cupom;
             }
 
@@ -147,6 +148,7 @@
             //Parcelas
 
             Console.WriteLine("Você deseja parcelar a sua compra ou pagar a vista? (parcela || vista)");
+            resp = Console.ReadLine();  
             while (!string.Equals(resp, "Parcela", StringComparison.OrdinalIgnoreCase) &&
                 !string.Equals(resp, "Vista", StringComparison.OrdinalIgnoreCase))
             {
@@ -163,25 +165,34 @@
                 {
                     Console.WriteLine("Numero de parcelas invalido digite um numero valido");
                 }
-                Parcela[1] = cupom / Parcela[0];
+                Parcela[1] = Vip[1] / Parcela[0];
 
-
-
+            }
+            else if (string.Equals(resp, "vista", StringComparison.OrdinalIgnoreCase)) {
+                Parcela[1] = Vip[1];
+            }
                 //Cupom fiscal
-
-                Console.WriteLine("===== SEU CUPOM FISCAL FOI CRIADO =====");
-                for(int i = 0; i < Pdr.Length; i++)
+                Console.Clear();
+            Console.WriteLine("===== SEU CUPOM FISCAL FOI CRIADO =====");
+                for (int i = 0; i < Pdr.Length; i++)
                 {
                     Console.WriteLine($"{Pdr[i]} - R$ {Vlr[i]:F2}");
                 }
-                Console.WriteLine($"Seu desconto foi de R$ {desc:F2}" +
-                    $"Você teve uma taxa de R$ {taxa:F2}\n" +
-                    $"Seu desconto com o cupom foi de R$ {cupom:F2}\n" +
-                    $"O desconto para Vips ficou em R$ {Vip[1]}\n" +
-                    $"Parcelado em " + Parcela[0]+"X\n" +
-                    $"Com cada parcela no valor de R${Parcela[1]}");
-
+            Console.WriteLine($"Você teve um desconto de  R$ {(total -desc):F2}\n" +
+                $"Você teve uma taxa de R$ {(taxa-desc):F2}\n" +
+                $"Seu desconto com o cupom foi de R$ {(taxa-cupom):F2}\n" +
+                $"O desconto para Vips ficou em R$ {(cupom-Vip[1]):F2}\n" +
+                $"O valor total da compra foi de R$ {Vip[1]:F2}");
+            if (Parcela[0] > 0)
+            {
+                Console.WriteLine($"Parcelado em " + Parcela[0] + "X\n" +
+                    $"Com cada parcela no valor de R${Parcela[1]:F2}");
             }
-        } 
+            else {
+                Console.WriteLine("Sua compra foi paga à vista. o valor total foi de R$ " + Vip[1]);
+            }
+
+            
+        }
     }
-}
+}   
