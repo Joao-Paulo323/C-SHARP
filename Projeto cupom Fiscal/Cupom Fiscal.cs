@@ -148,7 +148,7 @@ namespace Cupom_Fiscal
             //Parcelas
 
             Console.WriteLine("Você deseja parcelar a sua compra ou pagar a vista? (parcela || vista)");
-            resp = Console.ReadLine();  
+            resp = Console.ReadLine();
             while (!string.Equals(resp, "Parcela", StringComparison.OrdinalIgnoreCase) &&
                 !string.Equals(resp, "Vista", StringComparison.OrdinalIgnoreCase))
             {
@@ -168,31 +168,33 @@ namespace Cupom_Fiscal
                 Parcela[1] = Vip[1] / Parcela[0];
 
             }
-            else if (string.Equals(resp, "vista", StringComparison.OrdinalIgnoreCase)) {
+            else if (string.Equals(resp, "vista", StringComparison.OrdinalIgnoreCase))
+            {
                 Parcela[1] = Vip[1];
             }
-                //Cupom fiscal
-                Console.Clear();
+            //Cupom fiscal
+            Console.Clear();
             Console.WriteLine("===== SEU CUPOM FISCAL FOI CRIADO =====");
-                for (int i = 0; i < Pdr.Length; i++)
-                {
-                    Console.WriteLine($"{Pdr[i]} - R$ {Vlr[i]:F2}");
-                }
-            Console.WriteLine($"Você teve um desconto de  R$ {(total -desc):F2}\n" +
-                $"Você teve uma taxa de R$ {(taxa-desc):F2}\n" +
-                $"Seu desconto com o cupom foi de R$ {(taxa-cupom):F2}\n" +
-                $"O desconto para Vips ficou em R$ {(cupom-Vip[1]):F2}\n" +
+            for (int i = 0; i < Pdr.Length; i++)
+            {
+                Console.WriteLine($"{Pdr[i]} - R$ {Vlr[i]:F2}");
+            }
+            Console.WriteLine($"Você teve um desconto de  R$ {(total - desc):F2}\n" +
+                $"Você teve uma taxa de R$ {(taxa - desc):F2}\n" +
+                $"Seu desconto com o cupom foi de R$ {(taxa - cupom):F2}\n" +
+                $"O desconto para Vips ficou em R$ {(cupom - Vip[1]):F2}\n" +
                 $"O valor total da compra foi de R$ {Vip[1]:F2}");
             if (Parcela[0] > 0)
             {
                 Console.WriteLine($"Parcelado em " + Parcela[0] + "X\n" +
                     $"Com cada parcela no valor de R${Parcela[1]:F2}");
             }
-            else {
-                Console.WriteLine("Sua compra foi paga à vista. o valor total foi de R$ " + Vip[1]);
+            else
+            {
+                Console.WriteLine($"Sua compra foi paga à vista. o valor total foi de R$  {Vip[1]:F2}");
             }
 
-            
+
         }
     }
-}   
+}
